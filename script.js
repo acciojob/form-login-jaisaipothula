@@ -1,18 +1,11 @@
-function getFormvalue() {
-    // Prevent the form from submitting (since we handle it with JavaScript)
-    event.preventDefault();
+cy.visit(baseUrl);
 
-    // Get the form element
-    const form = document.getElementById('myForm');
+cy.get('input[name="fname"]').should('exist').type('John');
+cy.get('input[name="lname"]').should('exist').type('Doe');
 
-    // Get the values of First Name and Last Name inputs
-    const firstName = form.elements['firstName'].value;
-    const lastName = form.elements['lastName'].value;
+cy.get('input[type="submit"]').should('exist').click();
 
-    // Display the values using alert
-    alert(`First Name: ${firstName}\nLast Name: ${lastName}`);
-}
+cy.on('window:alert', (str) => {
+  expect(str).to.equal('John Doe');
+});
 
-// Attach event listener to the form's submit event
-const form = document.getElementById('myForm');
-form.addEventListener('submit', getFormvalue);
