@@ -1,11 +1,18 @@
-cy.visit(baseUrl);
+document.addEventListener('DOMContentLoaded', () => {
+  const userForm = document.getElementById('userForm');
 
-cy.get('input[name="fname"]').should('exist').type('John');
-cy.get('input[name="lname"]').should('exist').type('Doe');
+  // Function to handle form submission
+  function getFormValue(event) {
+    event.preventDefault(); // Prevent default form submission behavior
 
-cy.get('input[type="submit"]').should('exist').click();
+    // Get values from the form inputs
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
 
-cy.on('window:alert', (str) => {
-  expect(str).to.equal('John Doe');
+    // Display alert with first and last name
+    alert(`${firstName} ${lastName}`);
+  }
+
+  // Attach event listener to form submission
+  userForm.addEventListener('submit', getFormValue);
 });
-
