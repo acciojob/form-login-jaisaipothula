@@ -3,8 +3,8 @@ function getFormValue(event) {
     event.preventDefault(); // Prevent the default form submission behavior
 
     // Get the values from the input fields
-    const firstName = document.getElementById('firstName').value;
-    const lastName = document.getElementById('lastName').value;
+    const firstName = document.getElementById('fname').value;
+    const lastName = document.getElementById('lname').value;
 
     // Combine first and last name
     const fullName = `${firstName} ${lastName}`;
@@ -14,4 +14,4 @@ function getFormValue(event) {
 }
 
 // Attach event listener to the form
-document.getElementById('loginForm').addEventListener('submit', getFormValue);
+document.getElementById('loginForm').addEventListener('submit', getFormValue);;
