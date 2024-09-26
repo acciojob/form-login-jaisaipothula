@@ -1,18 +1,18 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const userForm = document.getElementById('userForm');
+// Function to handle form submission
+function getFormValue(event) {
+    // Prevent the default form submission behavior
+    event.preventDefault();
 
-  // Function to handle form submission
-  function getFormValue(event) {
-    event.preventDefault(); // Prevent default form submission behavior
-
-    // Get values from the form inputs
+    // Get values from the input fields
     const firstName = document.getElementById('firstName').value.trim();
     const lastName = document.getElementById('lastName').value.trim();
 
-    // Display alert with first and last name
-    alert(`${firstName} ${lastName}`);
-  }
+    // Concatenate first and last name
+    const fullName = `${firstName} ${lastName}`;
 
-  // Attach event listener to form submission
-  userForm.addEventListener('submit', getFormValue);
-});
+    // Display the full name in an alert
+    alert(fullName);
+}
+
+// Add event listener to the form for submission
+document.getElementById('nameForm').addEventListener('submit', getFormValue);
